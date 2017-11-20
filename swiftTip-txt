@@ -1,0 +1,317 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+var str = "Hello, playground"
+
+/***************************************字符串****************************************************/
+// 字符串的长度
+var  stringValue = "qwe擦"
+print(stringValue.lengthOfBytes(using: String.Encoding.utf8))
+// 字符串的拼接
+var string1  = "asdas"
+var string2 = "deqwe1"
+var string3 = string1 + string2
+
+print(string3)
+
+// 字符串的比较 = ,> ,<
+// 判断前后缀
+var  str5 = "http://www.baidu.com"
+if str5 .hasPrefix("www"){
+    print("是url")
+}
+
+if str5.hasSuffix(".com") {
+    print("是顶级域名")
+}
+
+// 大小写转换
+var str6 = "avc.txt"
+print(str6.uppercased())
+print(str6.lowercased())
+
+// 转换成基本数据类型
+var str7 = "123"
+var number : Int? = Int(str7)
+
+if number != nil {
+    print(number!)
+}
+/****************************************字符串***************************************************/
+
+/****************************************封装多态***************************************************/
+
+// 封装
+public class Student {
+    public var name : String
+// internal 指的是在本模块中访问的到，private只是在本类中访问到
+    internal var age : Int
+    private var score : Int
+    
+    init(name : String, age : Int, score : Int) {
+        self.age = age
+        self.name = name
+        self.score = score
+    }
+    public func sayHi(){
+        print("Hello!")
+    }
+    
+    private func getScore() {
+        print("我的分数是: \(score)")
+    }
+    
+}
+
+let  student = Student.init(name: "tanzhiwen", age: 27, score: 98)
+student.sayHi()
+
+//多态
+class Animal{
+    func say(){
+        print("动物叫")
+    }
+}
+
+class Cat : Animal{
+    override func say(){
+    print("猫叫")
+    }
+}
+
+class Dog : Animal{
+    override func say(){
+        print("狗叫")
+    }
+}
+
+let animal1 : Animal = Cat()
+let animal2 : Animal = Dog()
+
+print(animal1)
+
+print(animal2)
+
+animal1.say()
+
+animal2.say()
+
+// 嵌套  swift中允许在一个类型中嵌套定义另一个类型的 可以在枚举类型，类和结构中定义支持定义潜逃的类型
+struct Car{
+    var brand : String?
+    var color : Color
+    enum Color {
+        case Red,White,Orange,Green,Gray
+    }
+}
+let  car = Car(brand : "劳斯莱斯", color: Car.Color.Red)
+print(car.color);
+/****************************************封装多态***************************************************/
+
+/****************************************属性**************************************************/
+//存储属性
+//1 在结构体或者类中定义的属性默认是存储属性
+struct Person{
+    var name : String?
+    var age : Int
+}
+
+var p = Person(name: "tanzhiwen", age: 24)
+print("name = \(p.name) age = \(p.age) ")
+
+p.name = "sahdiu"
+p.age = 25
+print("name = \(p.name) age = \(p.age)")
+
+//2 常量的存储属性
+struct Person2{
+    var name : String?
+    var age : Int
+    let card : String
+}
+
+var p2 = Person2(name : "HUQEWRHQ", age : 23, card : "qweqw")
+
+p2.name = "asdqs"
+p2.age = 45
+//p2.card = "hjoeiah"
+//注意：struct 或者是 类中的属性如果定义成let 常量就是不能修改的
+//延迟存储属性，存储属性必须有初始值，也有另外
+//demo：
+class Line{
+    var start : Double = 0.0
+    var end :  Double = 0.0
+    
+    lazy var length : Double = self.getLength()
+    
+//  通过闭包懒加载
+    lazy var container : Array<AnyObject> = {
+        print("lazy loading2")
+        var arrM: Array<Int> = []
+       
+        return arrM as [AnyObject]
+    }()
+    
+    func getLength() -> Double {
+        print("lazy loading1")
+        return end - start
+    }
+}
+
+var line = Line()
+
+line.end = 200
+print("创建对象完毕")
+print(line.length)
+
+var arrM = line.container
+arrM.append("1" as  AnyObject)
+arrM.append(5 as  AnyObject)
+print(arrM)
+
+//计算机属性
+struct Rect{
+    var origion:(x: Double,y: Double) = (0,0)
+    var size : (w:Double, h:Double) = (0,0)
+    
+    var center :(x : Double, y: Double){
+        get{
+        return (origion.x + size.w/2 , origion.y + size.h/2)
+        }
+        set{
+        origion.x = newValue.x - size.w/2
+        origion.y = newValue.y - size.h/2
+        }
+    }
+}
+var r = Rect()
+r.origion = (0,0)
+r.size = (100,200)
+print("origion.x = \(r.origion.x), origion.y = \(r.origion.y)")
+print("center.x = \(r.center.x), center.y = \(r.center.y)")
+
+//属性观察者 : 监听属性什么时候被修改，只有属性被修改的时候才会调用
+
+//1 willSet  2didSet
+class Line3 {
+    var start: Double = 0.0{
+        willSet {
+            print("willSet newValue = \(newValue)")
+        }
+        didSet {
+            print("didSet oldValue = \(oldValue)")
+        }
+    }
+    var end : Double = 0.0
+}
+
+var l = Line3()
+l.start = 10.0
+
+
+//类属性
+
+
+
+/****************************************属性***************************************************/
+
+
+/****************************************数组***************************************************/
+//1 空数组
+var arr5 = [Int]()
+var arr6 = Array<Int>()
+print(arr5)
+print(arr6)
+
+
+
+//2 不可变数组
+
+let arr7 : [Int] = []
+
+//3 可变数组
+var arr8 : [String] = [String]()
+
+//元素类型
+var arr9 = [1,"euqw",1.232] as [Any]
+print(arr9)
+print (arr9[2])
+
+var arr11: Array<Any>  = [1,"wqe",1.22]
+print(arr11)
+
+
+
+//数组的操作
+//1 长度  2 判空  3检索  4 追加  5 插入 6更新  7删除  8移除某个区间的数组元素  其实range就是半闭区间
+var arr12 = [1,"qweq","sdsa",1.23] as [Any]
+print(arr12.count)
+
+var arr13 = [12,2,3]
+print(arr13.isEmpty)
+
+print(arr13[2])
+
+var arr14 = [1,2,3]
+arr14 += [4]
+print("xxxxxxxxxxxx")
+print(arr14)
+arr14 += arr14[1...2]
+print(arr14)
+
+// 插入
+var arr15 = [2,3,4,5,6]
+arr15.insert(123,at:2)
+arr15.append(321)
+print(arr15)
+
+//更新
+var arr17 = [1,2,3]
+arr17[0] = 0
+print(arr17)
+
+
+//删除
+var arr18 = [2,3,4,5,6]
+arr18.remove(at : 2)
+print(arr18)
+
+/****************************************数组***************************************************/
+
+/****************************************数组复杂操作***************************************************/
+
+
+var arr = [1,2,3]
+arr.replaceSubrange(0...1,with: [99,97,98])
+print(arr)
+
+var arr1 = [1,2,3]
+
+for i in 0..<arr1.count{
+    print(arr1[i])
+    
+}
+for number in arr1{
+    print(number)
+    
+}
+
+// 取出数组中的某个区间的范围的值
+var arr2 = [1,2,3]
+for number in arr2[0..<2]{
+    print("please get a number")
+    print(number)
+}
+
+/****************************************数组复杂操作***************************************************/
+
+
+
+
+
+
+
+
+
+
