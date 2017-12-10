@@ -327,7 +327,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		63CC3C2A1FDCC12E00D8363F /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		63E6443F1F73CFE100090A2C /* SwiftTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E644421F73CFE100090A2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63E644491F73CFE100090A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -685,7 +684,6 @@
 		63E644411F73CFE100090A2C /* SwiftTips */ = {
 			isa = PBXGroup;
 			children = (
-				63FD66911FDCC09F00DA3820 /* ToTest */,
 				63E646CC1F73D1F300090A2C /* Main.storyboard */,
 				63E644701F73D0F700090A2C /* AliPayViewController.swift */,
 				63E644711F73D0F700090A2C /* BaseViewController */,
@@ -1126,14 +1124,6 @@
 				63E645A51F73D0F800090A2C /* UIButton+Kingfisher.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		63FD66911FDCC09F00DA3820 /* ToTest */ = {
-			isa = PBXGroup;
-			children = (
-				63CC3C2A1FDCC12E00D8363F /* MyPlayground.playground */,
-			);
-			path = ToTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1801,7 +1791,6 @@
 				63E644691F73CFE100090A2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		63E6446A1F73CFE100090A2C /* Build configuration list for PBXNativeTarget "SwiftTipsTests" */ = {
 			isa = XCConfigurationList;
@@ -1810,7 +1799,6 @@
 				63E6446C1F73CFE100090A2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		63E6446D1F73CFE100090A2C /* Build configuration list for PBXNativeTarget "SwiftTipsUITests" */ = {
 			isa = XCConfigurationList;
@@ -1819,7 +1807,6 @@
 				63E6446F1F73CFE100090A2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
